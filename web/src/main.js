@@ -11,6 +11,8 @@ import 'swiper/css/swiper.css'
 
 import Card from './components/Card.vue'
 import ListCard from './components/ListCard.vue'
+import HeroCard from './components/HeroCard.vue'
+
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios.create({
@@ -19,6 +21,8 @@ Vue.prototype.$http = axios.create({
 })
 Vue.component('m-card', Card)
 Vue.component('m-list-card', ListCard)
+Vue.component('m-hero-card', HeroCard)
+
 
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 new Vue({

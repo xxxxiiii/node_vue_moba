@@ -16,9 +16,9 @@
 
     <div class="nav-icons bg-white mt-3 text-center pt-3 text-dark-1">
       <div class="d-flex flex-wrap">
-        <div class="nav-item mb-3" v-for="n in 10" :key="n">
-          <i class="sprite sprite-news"></i>
-          <div class="py-2">爆料站</div>
+        <div class="nav-item mb-3" v-for="item in navIcons" :key="item.icon">
+          <i class="sprite" :class="`sprite-${item.icon}`"></i>
+          <div class="py-2">{{item.name}}</div>
         </div>
       </div>
       <div class="bg-light py-2 fs-sm">
@@ -27,14 +27,16 @@
       </div>
     </div>
     <!-- end of nav icons -->
-    
+
     <m-list-card icon="Menu" title="新闻资讯" :categories="newsCats">
       <template #items="{category}">
-        <router-link 
-        tag="div"
-        :to="`/articles/${news._id}`"
-        class="py-2 fs-lg d-flex" 
-        v-for="(news, i) in category.newsList" :key="i">
+        <router-link
+          tag="div"
+          :to="`/articles/${news._id}`"
+          class="py-2 fs-lg d-flex"
+          v-for="(news, i) in category.newsList"
+          :key="i"
+        >
           <span class="text-info">[{{news.categoryName}}]</span>
           <span class="px-2">|</span>
           <span class="flex-1 text-dark-1 text-ellipsis pr-2">{{news.title}}</span>
@@ -44,30 +46,29 @@
     </m-list-card>
     <m-list-card icon="card-hero" title="英雄列表" :categories="heroCats">
       <template #items="{category}">
-        <div 
-        
-        class="d-flex flex-wrap" style="margin: 0 -0.5rem ">
-          <router-link  class="p-2 text-center" 
-          style="width: 20%"
-          tag="div"
-        :to="`/heroes/${hero._id}`"
-          v-for="(hero, i) in category.heroList" :key="i">
-          <img :src="hero.avator" class="w-100" alt="">
-          <div>{{hero.name}}</div>
-        </router-link >
+        <div class="d-flex flex-wrap" style="margin: 0 -0.5rem ">
+          <router-link
+            class="p-2 text-center"
+            style="width: 20%"
+            tag="div"
+            :to="`/heroes/${hero._id}`"
+            v-for="(hero, i) in category.heroList"
+            :key="i"
+          >
+            <img :src="hero.avator" class="w-100" alt />
+            <div>{{hero.name}}</div>
+          </router-link>
         </div>
       </template>
     </m-list-card>
-    <m-card icon="Menu" title="精彩视频"></m-card>
-    <m-card icon="Menu" title="图文攻略"></m-card>
+    
   </div>
 </template>
 
 <script>
-
 import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 export default {
   name: "Home",
@@ -77,6 +78,21 @@ export default {
   },
   data() {
     return {
+      navIcons: [
+        {icon: 'blz', name: '爆料站'},
+        {icon: 'gsz', name: '故事站'},
+        {icon: 'zbsc', name: '周边商城'},
+        {icon: 'tyf', name: '体验服'},
+        {icon: 'xrzq', name: '新人专区'},
+        {icon: 'rycc', name: '荣耀传承'},
+        {icon: 'mnzzlk', name: '模拟战资料库'},
+        {icon: 'wzyd', name: '王者营地'},
+        {icon: 'gzh', name: '公众号'},
+        {icon: 'bbjs', name: '版本介绍'},
+        {icon: 'djhj', name: '对局环境'},
+        {icon: 'wxwzt', name: '无限王者团'},
+        {icon: 'cyhdy', name: '创意互动营'},
+        ],
       swiperOptions: {
         pagination: {
           el: ".pagination-home"
@@ -84,26 +100,27 @@ export default {
         // Some Swiper option/callback...
       },
       newsCats: [],
-      heroCats: []
-    }
+      heroCats: [],
+
+    };
   },
   created() {
-    this.fetchNewsCats()
-    this.fetchHeroCats()
+    this.fetchNewsCats();
+    this.fetchHeroCats();
   },
   methods: {
-    async fetchNewsCats(){
-      const res = await this.$http.get('news/list')
-      this.newsCats = res.data
+    async fetchNewsCats() {
+      const res = await this.$http.get("news/list");
+      this.newsCats = res.data;
     },
-    async fetchHeroCats(){
-      const res = await this.$http.get('heroes/list')
-      this.heroCats = res.data
+    async fetchHeroCats() {
+      const res = await this.$http.get("heroes/list");
+      this.heroCats = res.data;
     }
   },
   filters: {
     date(val) {
-      return dayjs(val).format('MM/DD')
+      return dayjs(val).format("MM/DD");
     }
   }
 };

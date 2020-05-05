@@ -1,4 +1,5 @@
 @import './_variables';
+
 //  reset
 * {
     box-sizing: border-box;
@@ -26,10 +27,12 @@ p {
 }
 
 // text-color
-@each $colorKey, $color in $colors {
+@each $colorKey,
+$color in $colors {
     .text-#{$colorKey} {
         color: $color;
     }
+
     .bg-#{$colorKey} {
         background-color: $color;
     }
@@ -51,15 +54,18 @@ p {
 }
 
 
-@each $sizeKey, $size in $font-sizes {
+@each $sizeKey,
+$size in $font-sizes {
     .fs-#{$sizeKey} {
         font-size: $size * $base-font-size;
     }
 }
+
 // width, height
 .w-100 {
     width: 100%
 }
+
 .h-100 {
     height: 100%
 }
@@ -68,59 +74,75 @@ p {
 .d-flex {
     display: flex;
 }
+
 .flex-column {
     flex-direction: column;
 }
+
 .flex-wrap {
     flex-wrap: wrap;
 }
 
-@each $key, $value in $flex-jc {
+@each $key,
+$value in $flex-jc {
     .jc-#{$key} {
         justify-content: $value;
     }
 }
 
-@each $key, $value in $flex-ai {
+@each $key,
+$value in $flex-ai {
     .ai-#{$key} {
         align-items: $value;
     }
 }
+
 .flex-1 {
     flex: 1;
 }
+
 .flex-grow-1 {
     flex-grow: 1;
 }
 
 
-@each $typeKey, $type in $spacing-types {
+@each $typeKey,
+$type in $spacing-types {
+
     // .m-1
-    @each $sizeKey, $size in $spacing-sizes {
+    @each $sizeKey,
+    $size in $spacing-sizes {
         .#{$typeKey}-#{$sizeKey} {
             #{$type}: $size * $spacing-base-size;
         }
     }
+
     // .mx-1, .my-1
-    @each $sizeKey, $size in $spacing-sizes {
+    @each $sizeKey,
+    $size in $spacing-sizes {
         .#{$typeKey}x-#{$sizeKey} {
             #{$type}-left: $size * $spacing-base-size;
             #{$type}-right: $size * $spacing-base-size;
         }
+
         .#{$typeKey}y-#{$sizeKey} {
             #{$type}-top: $size * $spacing-base-size;
             #{$type}-bottom: $size * $spacing-base-size;
         }
     }
+
     // .mt-1
-    @each $directionKey, $direction in $spacing-directions {
-        @each $sizeKey, $size in $spacing-sizes {
+    @each $directionKey,
+    $direction in $spacing-directions {
+
+        @each $sizeKey,
+        $size in $spacing-sizes {
             .#{$typeKey}#{$directionKey}-#{$sizeKey} {
                 #{$type}-#{$direction}: $size * $spacing-base-size;
             }
         }
     }
-    
+
 }
 
 // button
@@ -131,21 +153,26 @@ p {
     padding: 0.2rem 0.6rem;
 }
 
+
 // nav
 .nav {
     display: flex;
+
     // justify-content: space-around;
     .nav-item {
         border-bottom: 3px solid transparent;
         padding-bottom: 0.2rem;
+
         &.active {
             color: map-get($colors, 'primary');
             border-bottom-color: map-get($colors, 'primary');
         }
     }
+
     &.nav-inverse {
         .nav-item {
             color: map-get($colors, 'white');
+
             &.active {
                 border-bottom-color: map-get($colors, 'white');
             }
@@ -158,28 +185,113 @@ p {
     background: url(../index.png) no-repeat 0 0;
     background-size: 28.8462rem;
     display: inline-block;
+
     &.sprite-logo {
         width: 60px;
         height: 60px;
         background-position: -2% 72.588%;
     }
-    &.sprite-news {
-        width: 1.7692rem;
-        height: 1.5385rem;
-        background-position: 63.546% 15.517%;
-    }
+
     &.sprite-arrow {
         width: 0.7692rem;
         height: 0.7692rem;
         background-position: 38.577% 52.076%;
     }
-    // &.sprite-story {
 
-    // }
-  }
+    &.sprite-blz {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 63.546% 15.517%;
+    }
 
-  @each $dir in (top, right, bottom, left) {
-      .border-#{$dir} {
-          border-#{$dir}: 1px solid $border-color;
-      }
-  }
+    &.sprite-gsz {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 90.483% 15%;
+    }
+
+    &.sprite-zbsc {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 36.746% 0.924%;
+    }
+
+    &.sprite-tyf {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 10.408% 15.517%;
+    }
+
+    &.sprite-xrzq {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 89.733% 1.266%;
+    }
+
+    &.sprite-rycc {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 36.1% 14.5%;
+    }
+
+    &.sprite-mnzzlk {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 9.302% 0.813%;
+    }
+
+    &.sprite-wzyd {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 63.3% 0.927%;
+    }
+
+    &.sprite-gzh {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 0 96.207%;
+    }
+
+    &.sprite-bbjs {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 63.546% 15.517%;
+    }
+
+    &.sprite-djhj {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 9.302% 0.813%;
+    }
+
+    &.sprite-wxwzt {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 89.733% 1.266%;
+    }
+
+    &.sprite-cyhdy {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 36.1% 15.287%;
+    }
+
+    &.sprite-yxsp {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 10.408% 27.209%;
+    }
+
+    &.sprite-ytsyx {
+        width: 1.7692rem;
+        height: 1.5385rem;
+        background-position: 10.549% 41.379%;
+    }
+
+}
+
+@each $dir in (top, right, bottom, left) {
+    .border-#{$dir} {
+        border-#{$dir}: 1px solid $border-color;
+    }
+}

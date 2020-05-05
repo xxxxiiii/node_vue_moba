@@ -138,9 +138,9 @@ module.exports = app => {
     router.get('/heroes/:id',async (req, res) => {
         const data = await Hero
         .findById(req.params.id)
-        .populate('categories')
+        .populate('categories items1 items2 partners.hero')
         .lean()
-        // data.related = await Hero.find().where({
+        // data.item = await Hero.find().where({
         //     categories: {$in: data.categories}
         // }).limit(2)
         res.send(data)

@@ -1,7 +1,9 @@
 <template>
   <div class="page-acticle" v-if="model">
     <div class="d-flex  py-3 px-2">
-      <div class="iconfont icon-back text-blue"></div>
+      <router-link class="iconfont icon-back text-blue"
+       tag="div"
+       to="/"></router-link>
       <strong class="flex-1 text-blue pl-2">
         {{model.title}}
       </strong>
